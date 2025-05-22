@@ -1,14 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Aboreto, Alkatra } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const aboreto = Aboreto({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-aboreto",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const alkatra = Alkatra({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-main",
 });
 
 export const metadata = {
@@ -19,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${aboreto.variable} ${alkatra.variable}`}>
         {children}
       </body>
     </html>
