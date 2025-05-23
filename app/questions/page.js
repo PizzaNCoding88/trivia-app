@@ -11,7 +11,10 @@ import {
 import { useState } from "react";
 import { categories } from "../../public/categories/categories";
 import { difficulties } from "@/public/difficulties/difficulties";
+
+
 import Buttons from "@/components/Buttons";
+
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
@@ -27,7 +30,7 @@ const QuestionsPage = () => {
       <div>
         <Typography
           sx={{
-            fontFamily: "var(--font-main)",
+            fontFamily: "var(--font-main)", 
             fontSize: "1.5rem",
             textAlign: "center",
           }}
@@ -79,6 +82,7 @@ const QuestionsPage = () => {
           sx={{
             fontFamily: "var(--font-main)",
             fontSize: "1.5rem",
+
             textAlign: "center",
           }}
         >
