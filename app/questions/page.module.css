@@ -6,4 +6,12 @@
   padding-block: 10%;
   padding-inline: 15%;
   color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 8vw;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
 }
