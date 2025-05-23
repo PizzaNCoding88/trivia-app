@@ -7,7 +7,6 @@ import {
   InputLabel,
   FormControl,
   Typography,
-  Button,
 } from "@mui/material";
 import { useState } from "react";
 import { categories } from "../../public/categories/categories";
