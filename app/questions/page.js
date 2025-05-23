@@ -7,18 +7,14 @@ import {
   InputLabel,
   FormControl,
   Typography,
-<<<<<<< HEAD
-  Button,
-=======
->>>>>>> 9dcc9103f06c0a05ced8cd937b2fddca1753f38a
 } from "@mui/material";
 import { useState } from "react";
 import { categories } from "../../public/categories/categories";
 import { difficulties } from "@/public/difficulties/difficulties";
-<<<<<<< HEAD
+
+
 import Buttons from "@/components/Buttons";
-=======
->>>>>>> 9dcc9103f06c0a05ced8cd937b2fddca1753f38a
+
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
@@ -34,8 +30,8 @@ const QuestionsPage = () => {
       <div>
         <Typography
           sx={{
-            fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontFamily: "var(--font-main)", 
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
@@ -60,7 +56,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
@@ -85,7 +81,8 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
+
             textAlign: "center",
           }}
         >
@@ -111,7 +108,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
@@ -128,14 +125,10 @@ const QuestionsPage = () => {
             ))}
           </Select>
         </FormControl>
-<<<<<<< HEAD
       </div>
       <div className={styles.buttonsContainer}>
         <Buttons name={"Reset Options"} />
         <Buttons name={"Start Game"} />
-=======
-        {console.log(questionsQuantity, category, difficulty, style)}
->>>>>>> 9dcc9103f06c0a05ced8cd937b2fddca1753f38a
       </div>
     </div>
   );

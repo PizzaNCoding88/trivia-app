@@ -9,12 +9,10 @@
   display: flex;
   flex-direction: column;
   gap: 8vw;
-<<<<<<< HEAD
 }
 
 .buttonsContainer {
   display: flex;
-  justify-content: space-between;
-=======
->>>>>>> 9dcc9103f06c0a05ced8cd937b2fddca1753f38a
+  justify-content: center;
+  gap: 3vw;
 }
