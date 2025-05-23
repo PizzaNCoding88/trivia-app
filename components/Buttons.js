@@ -3,9 +3,10 @@ import { Button } from "@mui/material";
 import styles from "./Buttons.module.css";
 
 const Buttons = (props) => {
-  const { name } = props;
+  const { name, click } = props;
   return (
     <Button
+      onClick={click}
       className={styles.button}
       size="large"
       variant="contained"

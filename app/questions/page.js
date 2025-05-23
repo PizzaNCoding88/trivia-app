@@ -7,14 +7,13 @@ import {
   InputLabel,
   FormControl,
   Typography,
+  Button,
 } from "@mui/material";
 import { useState } from "react";
 import { categories } from "../../public/categories/categories";
 import { difficulties } from "@/public/difficulties/difficulties";
 
-
 import Buttons from "@/components/Buttons";
-
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
@@ -22,15 +21,32 @@ const QuestionsPage = () => {
   const [difficulty, setDifficulty] = useState("");
   const [style, setStyle] = useState("");
   const types = [
+    { value: "0", label: "Both" },
     { value: "multiple", label: "Multiple Choice" },
     { value: "boolean", label: "True / False" },
   ];
+
+  async function getData(questionsQuantity, category, difficulty, style) {
+    const url = `https://opentdb.com/api.php?amount=${questionsQuantity}&category=${category}&difficulty=${difficulty}&type=${style}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const json = await response.json();
+      console.log(json.results);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   return (
     <div className={styles.page}>
       <div>
         <Typography
           sx={{
-            fontFamily: "var(--font-main)", 
+            fontFamily: "var(--font-main)",
             fontSize: "1.5rem",
             textAlign: "center",
           }}
@@ -102,7 +118,6 @@ const QuestionsPage = () => {
             ))}
           </Select>
         </FormControl>
-        {console.log(questionsQuantity, category, difficulty)}
       </div>
       <div>
         <Typography
@@ -128,7 +143,10 @@ const QuestionsPage = () => {
       </div>
       <div className={styles.buttonsContainer}>
         <Buttons name={"Reset Options"} />
-        <Buttons name={"Start Game"} />
+        <Buttons
+          name={"Start Game"}
+          click={() => getData(questionsQuantity, category, difficulty, style)}
+        />
       </div>
     </div>
   );

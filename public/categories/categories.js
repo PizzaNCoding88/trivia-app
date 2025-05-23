@@ -1,4 +1,5 @@
 export const categories = [
+  { id: 0, name: "All Categories" },
   { id: 9, name: "General Knowledge" },
   { id: 10, name: "Entertainment: Books" },
   { id: 11, name: "Entertainment: Film" },
