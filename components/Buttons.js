@@ -15,7 +15,7 @@ const Buttons = (props) => {
         borderWidth: "2px",
         boxShadow: "4px 4px 10px var(--background)",
         backgroundColor: "var(--buttons-bg)",
-        width: "30vw",
+        width: "31vw",
         fontFamily: "var(--font-main)",
         color: "var(--background)",
         backgroundColor: "var(--buttons-bg)",

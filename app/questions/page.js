@@ -28,7 +28,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
@@ -53,7 +53,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
@@ -78,7 +78,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
@@ -104,7 +104,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: 30,
+            fontSize: "1.5rem",
             textAlign: "center",
           }}
         >
