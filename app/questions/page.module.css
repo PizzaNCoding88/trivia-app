@@ -1,0 +1,9 @@
+.page {
+  --main-color: #b8b64c;
+
+  height: 100vh;
+  background-color: var(--main-color);
+  padding-block: 10%;
+  padding-inline: 15%;
+  color: black;
+}
