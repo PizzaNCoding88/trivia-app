@@ -26,6 +26,13 @@ const QuestionsPage = () => {
     { value: "boolean", label: "True / False" },
   ];
 
+  function resetOptions() {
+    setCategory("");
+    setDifficulty("");
+    setQuestionsQuantity("");
+    setStyle("");
+  }
+
   async function getData(questionsQuantity, category, difficulty, style) {
     const url = `https://opentdb.com/api.php?amount=${questionsQuantity}&category=${category}&difficulty=${difficulty}&type=${style}`;
     try {
@@ -142,7 +149,7 @@ const QuestionsPage = () => {
         </FormControl>
       </div>
       <div className={styles.buttonsContainer}>
-        <Buttons name={"Reset Options"} />
+        <Buttons name={"Reset Options"} click={resetOptions} />
         <Buttons
           name={"Start Game"}
           click={() => getData(questionsQuantity, category, difficulty, style)}
