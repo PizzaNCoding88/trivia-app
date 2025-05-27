@@ -1,5 +1,5 @@
 .page {
-  --main-color: #b8b64c;
+  /* --main-color: #b8b64c; */
 
   height: 100vh;
   background-color: var(--main-color);
