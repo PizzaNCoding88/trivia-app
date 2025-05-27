@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { createContext, useContext, useState } from "react";
 import styles from "./page.module.css";
 import {
   Select,
@@ -9,18 +9,21 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import { useState } from "react";
 import { categories } from "../../public/categories/categories";
 import { difficulties } from "@/public/difficulties/difficulties";
-
+import { useQuiz } from "../context/QuizContext";
 import Buttons from "@/components/Buttons";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [style, setStyle] = useState("");
+  const { setQuestions } = useQuiz();
+  const router = useRouter();
+
   const types = [
     { value: "0", label: "Both" },
     { value: "multiple", label: "Multiple Choice" },
@@ -41,9 +44,9 @@ const QuestionsPage = () => {
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-
       const json = await response.json();
-      console.log(json.results);
+      setQuestions(json);
+      router.push("/quiz");
     } catch (error) {
       console.error(error.message);
     }
@@ -55,7 +58,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: "1.5rem",
+            fontSize: "5vw",
             textAlign: "center",
           }}
         >
@@ -80,7 +83,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: "1.5rem",
+            fontSize: "5vw",
             textAlign: "center",
           }}
         >
@@ -105,7 +108,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: "1.5rem",
+            fontSize: "5vw",
 
             textAlign: "center",
           }}
@@ -131,7 +134,7 @@ const QuestionsPage = () => {
         <Typography
           sx={{
             fontFamily: "var(--font-main)",
-            fontSize: "1.5rem",
+            fontSize: "5vw",
             textAlign: "center",
           }}
         >

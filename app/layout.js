@@ -1,5 +1,6 @@
 import { Aboreto, Alkatra } from "next/font/google";
 import "./globals.css";
+import { QuizProvider } from "./context/QuizContext";
 
 const aboreto = Aboreto({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${aboreto.variable} ${alkatra.variable}`}>
-        {children}
+        <QuizProvider>{children}</QuizProvider>
       </body>
     </html>
   );
