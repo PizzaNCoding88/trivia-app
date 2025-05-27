@@ -14,6 +14,7 @@ import { categories } from "../../public/categories/categories";
 import { difficulties } from "@/public/difficulties/difficulties";
 
 import Buttons from "@/components/Buttons";
+import Link from "next/link";
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
@@ -150,10 +151,14 @@ const QuestionsPage = () => {
       </div>
       <div className={styles.buttonsContainer}>
         <Buttons name={"Reset Options"} click={resetOptions} />
-        <Buttons
-          name={"Start Game"}
-          click={() => getData(questionsQuantity, category, difficulty, style)}
-        />
+        <Link href={"/quiz"}>
+          <Buttons
+            name={"Start Game"}
+            click={() =>
+              getData(questionsQuantity, category, difficulty, style)
+            }
+          />
+        </Link>
       </div>
     </div>
   );
