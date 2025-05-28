@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button, Typography, ButtonGroup } from "@mui/material";
 import { shuffleArray } from "../utils/shuffleArray";
 import styles from "./page.module.css";
+import { decodeHtml } from "../utils/decodeHTML";
 
 const QuizPage = () => {
   const { questions } = useQuiz();
@@ -16,16 +17,25 @@ const QuizPage = () => {
       ...quiz[currentIndex].incorrect_answers,
       quiz[currentIndex].correct_answer,
     ];
-    console.log(quiz[currentIndex]);
-    console.log(answers);
+
+    console.log(questions.results[currentIndex].correct_answer);
+
     const shuffledAnswers = shuffleArray(answers);
+
+    function handleAnswer(i) {
+      if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
+        setCurrentIndex(currentIndex + 1);
+        console.log(currentIndex);
+      }
+    }
+
     return (
       <div className={styles.container}>
-        <Typography>{quiz[currentIndex].question}</Typography>
+        <Typography>{decodeHtml(quiz[currentIndex].question)}</Typography>
         <ButtonGroup
           sx={{
             display: "grid",
-            gridTemplateColumns: "200px 200px",
+            gridTemplateColumns: "40vw 40vw",
             gap: "1rem",
           }}
         >
@@ -34,6 +44,7 @@ const QuizPage = () => {
               key={i}
               variant="contained"
               sx={{ borderRadius: "4px !important" }}
+              onClick={() => handleAnswer(i)}
             >
               {answer}
             </Button>
