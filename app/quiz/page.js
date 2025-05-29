@@ -10,6 +10,8 @@ import { decodeHtml } from "../utils/decodeHTML";
 const QuizPage = () => {
   const { questions } = useQuiz();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+  const [wrongAnswer, setWrongAnswer] = useState(false);
 
   if (questions && questions.results && questions.results.length > 0) {
     let quiz = questions.results;
@@ -19,37 +21,51 @@ const QuizPage = () => {
     ];
 
     console.log(questions.results[currentIndex].correct_answer);
+    // console.log(questions.results);
 
     const shuffledAnswers = shuffleArray(answers);
 
     function handleAnswer(i) {
       if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
-        setCurrentIndex(currentIndex + 1);
-        console.log(currentIndex);
+        if (currentIndex + 1 >= quiz.length) {
+          setIsFinished(true);
+        } else {
+          setCurrentIndex(currentIndex + 1);
+        }
+      } else {
+        setWrongAnswer(true);
       }
     }
 
     return (
       <div className={styles.container}>
-        <Typography>{decodeHtml(quiz[currentIndex].question)}</Typography>
-        <ButtonGroup
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "40vw 40vw",
-            gap: "1rem",
-          }}
-        >
-          {shuffledAnswers.map((answer, i) => (
-            <Button
-              key={i}
-              variant="contained"
-              sx={{ borderRadius: "4px !important" }}
-              onClick={() => handleAnswer(i)}
+        {wrongAnswer ? (
+          <Typography>Wrong Answer</Typography>
+        ) : isFinished ? (
+          <Typography>You completed the game</Typography>
+        ) : (
+          <div>
+            <Typography>{decodeHtml(quiz[currentIndex].question)}</Typography>
+            <ButtonGroup
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "40vw 40vw",
+                gap: "1rem",
+              }}
             >
-              {answer}
-            </Button>
-          ))}
-        </ButtonGroup>
+              {shuffledAnswers.map((answer, i) => (
+                <Button
+                  key={i}
+                  variant="contained"
+                  sx={{ borderRadius: "4px !important" }}
+                  onClick={() => handleAnswer(i)}
+                >
+                  {answer}
+                </Button>
+              ))}
+            </ButtonGroup>
+          </div>
+        )}
       </div>
     );
   }
