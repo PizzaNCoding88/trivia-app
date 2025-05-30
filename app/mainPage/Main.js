@@ -16,7 +16,7 @@ const Main = () => {
     <div className={styles.page}>
       <div className={styles.container}>
         <Image alt="logo" src={Logo} priority={true} className={styles.logo} />
-        <Buttons name={"Continue"} click={nextPage} />
+        <Buttons name={"Continue"} click={nextPage} color="secondary" />
       </div>
     </div>
   );

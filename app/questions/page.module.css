@@ -1,10 +1,8 @@
 .page {
-  /* --main-color: #b8b64c; */
-
   height: 100vh;
-  background-color: var(--main-color);
+  background-image: url("/assets/images/background.jpg");
   padding-inline: 15%;
-  color: black;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   flex-direction: column;

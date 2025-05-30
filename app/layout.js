@@ -1,18 +1,5 @@
-import { Aboreto, Alkatra } from "next/font/google";
 import "./globals.css";
-import { QuizProvider } from "./context/QuizContext";
-
-const aboreto = Aboreto({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-aboreto",
-});
-
-const alkatra = Alkatra({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-main",
-});
+import Providers from "./Providers";
 
 export const metadata = {
   title: "Trivia App",
@@ -22,8 +9,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${aboreto.variable} ${alkatra.variable}`}>
-        <QuizProvider>{children}</QuizProvider>
+      <body>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,9 +1,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --buttons-bg: #d9d9d9;
+  --buttons-bg: #6233ca;
   --main-color: #6233ca;
   --secondary-color: #001695;
+  --font-main: "Ginto Nord", Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,17 +14,23 @@
   }
 }
 
+@font-face {
+  font-family: "Ginto Nord";
+  src: url("/assets/fonts/Ginto Nord Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: var(--font-aboreto);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

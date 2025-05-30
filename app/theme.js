@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
@@ -9,6 +9,9 @@ const theme = createTheme({
       main: "#001695",
     },
   },
+  typography: {
+    fontFamily: "'Ginto', var(--font-main), Arial, sans-serif",
+  },
 });
-//import font to download from gmail
+
 export default theme;

@@ -17,8 +17,8 @@ const Buttons = (props) => {
         boxShadow: "4px 4px 10px var(--background)",
         backgroundColor: "var(--buttons-bg)",
         width: "31vw",
-        fontFamily: "var(--font-main)",
-        color: "var(--background)",
+        fontFamily: "'Ginto', var(--font-main), Arial, sans-serif",
+        color: "#ffffff",
         backgroundColor: "var(--buttons-bg)",
         boxShadow: "4px 4px 10px var(--background)",
       }}
