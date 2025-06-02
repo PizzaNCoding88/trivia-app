@@ -1,6 +1,5 @@
 .page {
   height: 100vh;
-  background-image: url("/assets/images/background.jpg");
   padding-inline: 15%;
   color: #ffffff;
   display: flex;
