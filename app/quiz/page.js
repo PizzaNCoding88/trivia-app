@@ -6,6 +6,8 @@ import { Button, Typography, ButtonGroup } from "@mui/material";
 import { shuffleArray } from "../utils/shuffleArray";
 import styles from "./page.module.css";
 import { decodeHtml } from "../utils/decodeHTML";
+import Image from "next/image";
+import Logo from "../../public/assets/images/logo.png";
 
 const QuizPage = () => {
   const { questions } = useQuiz();
@@ -38,34 +40,51 @@ const QuizPage = () => {
     }
 
     return (
-      <div className={styles.container}>
-        {wrongAnswer ? (
-          <Typography>Wrong Answer</Typography>
-        ) : isFinished ? (
-          <Typography>You completed the game</Typography>
-        ) : (
-          <div>
-            <Typography>{decodeHtml(quiz[currentIndex].question)}</Typography>
-            <ButtonGroup
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "40vw 40vw",
-                gap: "1rem",
-              }}
-            >
-              {shuffledAnswers.map((answer, i) => (
-                <Button
-                  key={i}
-                  variant="contained"
-                  sx={{ borderRadius: "4px !important" }}
-                  onClick={() => handleAnswer(i)}
-                >
-                  {answer}
-                </Button>
-              ))}
-            </ButtonGroup>
-          </div>
-        )}
+      <div className={styles.main}>
+        <Image alt="Logo" src={Logo} width={150} height={150} />
+        <div className={styles.container}>
+          {wrongAnswer ? (
+            <Typography>Wrong Answer</Typography>
+          ) : isFinished ? (
+            <Typography>You completed the game</Typography>
+          ) : (
+            <div className={styles.questionAnswersContainer}>
+              <Typography className={styles.questionBox}>
+                {decodeHtml(quiz[currentIndex].question)}
+                <span
+                  className={`${styles.decorations} ${styles.topLeft}`}
+                ></span>
+                <span
+                  className={`${styles.decorations} ${styles.topRight}`}
+                ></span>
+                <span
+                  className={`${styles.decorations} ${styles.bottomLeft}`}
+                ></span>
+                <span
+                  className={`${styles.decorations} ${styles.bottomRight}`}
+                ></span>
+              </Typography>
+              <ButtonGroup
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "40vw 40vw",
+                  gap: "1rem",
+                }}
+              >
+                {shuffledAnswers.map((answer, i) => (
+                  <Button
+                    key={i}
+                    variant="contained"
+                    sx={{ borderRadius: "4px !important" }}
+                    onClick={() => handleAnswer(i)}
+                  >
+                    {answer}
+                  </Button>
+                ))}
+              </ButtonGroup>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

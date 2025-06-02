@@ -1,5 +1,14 @@
-.container {
+.main {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,4 +16,49 @@
   padding: 2rem;
   gap: 10rem;
   text-align: center;
+}
+
+.questionAnswersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.questionBox {
+  background-color: var(--main-color);
+  padding-inline: 3rem;
+  padding-block: 1.5rem;
+  border-radius: 8px;
+  color: white;
+  position: relative;
+}
+
+.decorations {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  position: absolute;
+  display: inline-block;
+  border-radius: 8px;
+  border: 2px solid black;
+}
+
+.topLeft {
+  top: 8px;
+  left: 8px;
+}
+
+.topRight {
+  top: 8px;
+  right: 8px;
+}
+
+.bottomLeft {
+  bottom: 8px;
+  left: 8px;
+}
+
+.bottomRight {
+  bottom: 8px;
+  right: 8px;
 }
