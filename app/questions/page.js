@@ -71,13 +71,18 @@ const QuestionsPage = () => {
           How many questions would you like to go for?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+          <InputLabel
+            sx={{
+              color: "rgba(255 255 255 / 100%)",
+            }}
+          >
             Number of questions
           </InputLabel>
 
           <Select
             value={questionsQuantity}
             onChange={(e) => setQuestionsQuantity(e.target.value)}
+            sx={{ backgroundColor: "var(--main-color)" }}
           >
             {Array.from({ length: 50 }, (_, i) => (
               <MenuItem key={i + 1} value={i + 1}>
@@ -113,13 +118,14 @@ const QuestionsPage = () => {
           What's your favourite category?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
             Choose category
           </InputLabel>
 
           <Select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            sx={{ backgroundColor: "var(--main-color)" }}
           >
             {categories.map((category) => (
               <MenuItem key={category.id} value={category.id}>
@@ -141,13 +147,14 @@ const QuestionsPage = () => {
           What's the difficulty you'd like to go for?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
             Choose Difficulty
           </InputLabel>
 
           <Select
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}
+            sx={{ backgroundColor: "var(--main-color)" }}
           >
             {difficulties.map((difficulty, i) => (
               <MenuItem key={i} value={difficulty.value}>
@@ -168,11 +175,15 @@ const QuestionsPage = () => {
           Do you prefer multiple choice or true/false style of trivia?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
             Choose Style
           </InputLabel>
 
-          <Select value={style} onChange={(e) => setStyle(e.target.value)}>
+          <Select
+            value={style}
+            onChange={(e) => setStyle(e.target.value)}
+            sx={{ backgroundColor: "var(--main-color)" }}
+          >
             {types.map((type, i) => (
               <MenuItem key={i} value={type.value}>
                 {type.label}
