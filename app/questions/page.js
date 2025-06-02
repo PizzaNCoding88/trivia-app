@@ -22,6 +22,7 @@ const QuestionsPage = () => {
   const [difficulty, setDifficulty] = useState("");
   const [style, setStyle] = useState("");
   const { setQuestions } = useQuiz();
+  const [noQuestionSelected, setNoQuestionSelected] = useState(false);
   const router = useRouter();
 
   const types = [
@@ -38,17 +39,21 @@ const QuestionsPage = () => {
   }
 
   async function getData(questionsQuantity, category, difficulty, style) {
-    const url = `https://opentdb.com/api.php?amount=${questionsQuantity}&category=${category}&difficulty=${difficulty}&type=${style}`;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
+    if (!questionsQuantity) {
+      setNoQuestionSelected(true);
+    } else {
+      const url = `https://opentdb.com/api.php?amount=${questionsQuantity}&category=${category}&difficulty=${difficulty}&type=${style}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        setQuestions(json);
+        router.push("/quiz");
+      } catch (error) {
+        console.error(error.message);
       }
-      const json = await response.json();
-      setQuestions(json);
-      router.push("/quiz");
-    } catch (error) {
-      console.error(error.message);
     }
   }
 
@@ -65,7 +70,9 @@ const QuestionsPage = () => {
           How many questions would you like to go for?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel>Number of questions</InputLabel>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+            Number of questions
+          </InputLabel>
 
           <Select
             value={questionsQuantity}
@@ -79,6 +86,11 @@ const QuestionsPage = () => {
           </Select>
         </FormControl>
       </div>
+      {noQuestionSelected && (
+        <Typography sx={{ color: "red" }}>
+          You haven't selected the quantity of questions
+        </Typography>
+      )}
       <div>
         <Typography
           sx={{
@@ -90,7 +102,9 @@ const QuestionsPage = () => {
           What's your favourite category?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel>Choose category</InputLabel>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+            Choose category
+          </InputLabel>
 
           <Select
             value={category}
@@ -116,7 +130,9 @@ const QuestionsPage = () => {
           What's the difficulty you'd like to go for?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel>Choose Difficulty</InputLabel>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+            Choose Difficulty
+          </InputLabel>
 
           <Select
             value={difficulty}
@@ -141,7 +157,9 @@ const QuestionsPage = () => {
           Do you prefer multiple choice or true/false style of trivia?
         </Typography>
         <FormControl fullWidth variant="filled">
-          <InputLabel>Choose Style</InputLabel>
+          <InputLabel sx={{ color: "rgba(255 255 255 / 70%)" }}>
+            Choose Style
+          </InputLabel>
 
           <Select value={style} onChange={(e) => setStyle(e.target.value)}>
             {types.map((type, i) => (
@@ -154,14 +172,11 @@ const QuestionsPage = () => {
       </div>
       <div className={styles.buttonsContainer}>
         <Buttons name={"Reset Options"} click={resetOptions} />
-        <Link href={"/quiz"}>
-          <Buttons
-            name={"Start Game"}
-            click={() =>
-              getData(questionsQuantity, category, difficulty, style)
-            }
-          />
-        </Link>
+
+        <Buttons
+          name={"Start Game"}
+          click={() => getData(questionsQuantity, category, difficulty, style)}
+        />
       </div>
     </div>
   );
