@@ -15,6 +15,7 @@ import { useQuiz } from "../context/QuizContext";
 import Buttons from "@/components/Buttons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ErrorIcon from "@mui/icons-material/Error";
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
@@ -85,12 +86,22 @@ const QuestionsPage = () => {
             ))}
           </Select>
         </FormControl>
+        {noQuestionSelected && (
+          <Typography
+            sx={{
+              color: "red",
+              display: "flex",
+              gap: "1rem",
+              alignItems: "center",
+              fontSize: "10px",
+              marginTop: "24px",
+            }}
+          >
+            <ErrorIcon sx={{ width: "15px", height: "15px" }} /> You haven't
+            selected the quantity of questions
+          </Typography>
+        )}
       </div>
-      {noQuestionSelected && (
-        <Typography sx={{ color: "red" }}>
-          You haven't selected the quantity of questions
-        </Typography>
-      )}
       <div>
         <Typography
           sx={{
