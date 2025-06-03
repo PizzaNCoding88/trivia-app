@@ -7,15 +7,16 @@ import {
   InputLabel,
   FormControl,
   Typography,
-  Button,
+  Box,
 } from "@mui/material";
 import { categories } from "../../public/categories/categories";
 import { difficulties } from "@/public/difficulties/difficulties";
 import { useQuiz } from "../context/QuizContext";
 import Buttons from "@/components/Buttons";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ErrorIcon from "@mui/icons-material/Error";
+import Logo from "../../public/assets/images/logo.png";
+import Image from "next/image";
 
 const QuestionsPage = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState("");
@@ -59,148 +60,168 @@ const QuestionsPage = () => {
   }
 
   return (
-    <div className={styles.page}>
-      <div>
-        <Typography
-          sx={{
-            fontFamily: "var(--font-main)",
-            fontSize: "5vw",
-            textAlign: "center",
-          }}
-        >
-          How many questions would you like to go for?
-        </Typography>
-        <FormControl fullWidth variant="filled">
-          <InputLabel
-            sx={{
-              color: "rgba(255 255 255 / 100%)",
-            }}
-          >
-            Number of questions
-          </InputLabel>
-
-          <Select
-            value={questionsQuantity}
-            onChange={(e) => setQuestionsQuantity(e.target.value)}
-            sx={{ backgroundColor: "var(--main-color)" }}
-          >
-            {Array.from({ length: 50 }, (_, i) => (
-              <MenuItem key={i + 1} value={i + 1}>
-                {i + 1}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {noQuestionSelected && (
+    <Box
+      sx={{
+        height: "100dvh",
+        width: "85%",
+        display: "flex",
+        flexDirection: "column",
+        marginInline: "auto",
+      }}
+    >
+      <Box
+        sx={{
+          height: "30%",
+          textAlign: " center",
+        }}
+      >
+        <Image alt="Logo" src={Logo} width={150} height={150} />
+      </Box>
+      <Box sx={{ height: "70%" }}>
+        <div>
           <Typography
             sx={{
-              color: "red",
-              display: "flex",
-              gap: "1rem",
-              alignItems: "center",
-              fontSize: "10px",
-              marginTop: "24px",
+              fontFamily: "var(--font-main)",
+              fontSize: "5vw",
+              textAlign: "center",
             }}
           >
-            <ErrorIcon sx={{ width: "15px", height: "15px" }} /> You haven't
-            selected the quantity of questions
+            How many questions would you like to go for?
           </Typography>
-        )}
-      </div>
-      <div>
-        <Typography
-          sx={{
-            fontFamily: "var(--font-main)",
-            fontSize: "5vw",
-            textAlign: "center",
-          }}
-        >
-          What's your favourite category?
-        </Typography>
-        <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
-            Choose category
-          </InputLabel>
+          <FormControl fullWidth variant="filled">
+            <InputLabel
+              sx={{
+                color: "rgba(255 255 255 / 100%)",
+              }}
+            >
+              Number of questions
+            </InputLabel>
 
-          <Select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            sx={{ backgroundColor: "var(--main-color)" }}
+            <Select
+              value={questionsQuantity}
+              onChange={(e) => setQuestionsQuantity(e.target.value)}
+              sx={{ backgroundColor: "var(--main-color)" }}
+            >
+              {Array.from({ length: 50 }, (_, i) => (
+                <MenuItem key={i + 1} value={i + 1}>
+                  {i + 1}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {noQuestionSelected && (
+            <Typography
+              sx={{
+                color: "red",
+                display: "flex",
+                gap: "1rem",
+                alignItems: "center",
+                fontSize: "10px",
+                marginTop: "24px",
+              }}
+            >
+              <ErrorIcon sx={{ width: "15px", height: "15px" }} /> You haven't
+              selected the quantity of questions
+            </Typography>
+          )}
+        </div>
+        <div>
+          <Typography
+            sx={{
+              fontFamily: "var(--font-main)",
+              fontSize: "5vw",
+              textAlign: "center",
+            }}
           >
-            {categories.map((category) => (
-              <MenuItem key={category.id} value={category.id}>
-                {category.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </div>
-      <div>
-        <Typography
-          sx={{
-            fontFamily: "var(--font-main)",
-            fontSize: "5vw",
+            What's your favourite category?
+          </Typography>
+          <FormControl fullWidth variant="filled">
+            <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
+              Choose category
+            </InputLabel>
 
-            textAlign: "center",
-          }}
-        >
-          What's the difficulty you'd like to go for?
-        </Typography>
-        <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
-            Choose Difficulty
-          </InputLabel>
+            <Select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              sx={{ backgroundColor: "var(--main-color)" }}
+            >
+              {categories.map((category) => (
+                <MenuItem key={category.id} value={category.id}>
+                  {category.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div>
+          <Typography
+            sx={{
+              fontFamily: "var(--font-main)",
+              fontSize: "5vw",
 
-          <Select
-            value={difficulty}
-            onChange={(e) => setDifficulty(e.target.value)}
-            sx={{ backgroundColor: "var(--main-color)" }}
+              textAlign: "center",
+            }}
           >
-            {difficulties.map((difficulty, i) => (
-              <MenuItem key={i} value={difficulty.value}>
-                {difficulty.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </div>
-      <div>
-        <Typography
-          sx={{
-            fontFamily: "var(--font-main)",
-            fontSize: "5vw",
-            textAlign: "center",
-          }}
-        >
-          Do you prefer multiple choice or true/false style of trivia?
-        </Typography>
-        <FormControl fullWidth variant="filled">
-          <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
-            Choose Style
-          </InputLabel>
+            What's the difficulty you'd like to go for?
+          </Typography>
+          <FormControl fullWidth variant="filled">
+            <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
+              Choose Difficulty
+            </InputLabel>
 
-          <Select
-            value={style}
-            onChange={(e) => setStyle(e.target.value)}
-            sx={{ backgroundColor: "var(--main-color)" }}
+            <Select
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+              sx={{ backgroundColor: "var(--main-color)" }}
+            >
+              {difficulties.map((difficulty, i) => (
+                <MenuItem key={i} value={difficulty.value}>
+                  {difficulty.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div>
+          <Typography
+            sx={{
+              fontFamily: "var(--font-main)",
+              fontSize: "5vw",
+              textAlign: "center",
+            }}
           >
-            {types.map((type, i) => (
-              <MenuItem key={i} value={type.value}>
-                {type.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </div>
-      <div className={styles.buttonsContainer}>
-        <Buttons name={"Reset Options"} click={resetOptions} />
+            Do you prefer multiple choice or true/false style of trivia?
+          </Typography>
+          <FormControl fullWidth variant="filled">
+            <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
+              Choose Style
+            </InputLabel>
 
-        <Buttons
-          name={"Start Game"}
-          click={() => getData(questionsQuantity, category, difficulty, style)}
-        />
-      </div>
-    </div>
+            <Select
+              value={style}
+              onChange={(e) => setStyle(e.target.value)}
+              sx={{ backgroundColor: "var(--main-color)" }}
+            >
+              {types.map((type, i) => (
+                <MenuItem key={i} value={type.value}>
+                  {type.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div className={styles.buttonsContainer}>
+          <Buttons name={"Reset Options"} click={resetOptions} />
+
+          <Buttons
+            name={"Start Game"}
+            click={() =>
+              getData(questionsQuantity, category, difficulty, style)
+            }
+          />
+        </div>
+      </Box>
+    </Box>
   );
 };
 

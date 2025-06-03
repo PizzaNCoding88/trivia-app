@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 import { useQuiz } from "../context/QuizContext";
 import { useRouter } from "next/navigation";
-import { Button, Typography, ButtonGroup } from "@mui/material";
+import { Button, Typography, ButtonGroup, Box } from "@mui/material";
 import { shuffleArray } from "../utils/shuffleArray";
 import styles from "./page.module.css";
 import { decodeHtml } from "../utils/decodeHTML";
 import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";
+import Wrong from "../wrong/wrong";
 
 const QuizPage = () => {
   const { questions } = useQuiz();
@@ -41,14 +42,32 @@ const QuizPage = () => {
 
     return (
       <div className={styles.main}>
-        <Image alt="Logo" src={Logo} width={150} height={150} />
-        <div className={styles.container}>
+        <Box sx={{ height: "30%" }}>
+          <Image alt="Logo" src={Logo} width={150} height={150} />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           {wrongAnswer ? (
-            <Typography>Wrong Answer</Typography>
+            <Wrong />
           ) : isFinished ? (
             <Typography>You completed the game</Typography>
           ) : (
-            <div className={styles.questionAnswersContainer}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "25vw",
+                width: "80%",
+              }}
+            >
               <Typography className={styles.questionBox}>
                 {decodeHtml(quiz[currentIndex].question)}
                 <span
@@ -82,9 +101,9 @@ const QuizPage = () => {
                   </Button>
                 ))}
               </ButtonGroup>
-            </div>
+            </Box>
           )}
-        </div>
+        </Box>
       </div>
     );
   }
