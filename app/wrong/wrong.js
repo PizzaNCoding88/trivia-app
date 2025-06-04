@@ -17,10 +17,23 @@ const Wrong = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "70%",
+        height: "80%",
+        color: "white",
+        gap: "3rem",
       }}
     >
-      <Typography>Wrong Answer</Typography>
+      <Typography
+        sx={{
+          backgroundColor: "var(--main-color)",
+          paddingBlock: "1rem",
+          paddingInline: "1.5rem",
+          borderRadius: "8px",
+          boxShadow: "2px 2px 10px black",
+          fontSize: "1.2rem",
+        }}
+      >
+        Wrong Answer
+      </Typography>
       <Buttons name={"Return home"} click={returnHome} />
     </Box>
   );

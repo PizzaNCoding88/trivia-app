@@ -87,7 +87,7 @@ const QuestionsPage = () => {
           color: "white",
         }}
       >
-        <div>
+        <Box>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
@@ -95,7 +95,7 @@ const QuestionsPage = () => {
               textAlign: "center",
             }}
           >
-            How many questions would you like to go for?
+            How many questions?
           </Typography>
           <FormControl fullWidth variant="filled">
             <InputLabel
@@ -125,16 +125,17 @@ const QuestionsPage = () => {
                 display: "flex",
                 gap: "1rem",
                 alignItems: "center",
-                fontSize: "10px",
+                fontSize: "13px",
                 marginTop: "24px",
+                textAlign: "center",
               }}
             >
               <ErrorIcon sx={{ width: "15px", height: "15px" }} /> You haven't
               selected the quantity of questions
             </Typography>
           )}
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
@@ -161,8 +162,8 @@ const QuestionsPage = () => {
               ))}
             </Select>
           </FormControl>
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
@@ -190,8 +191,8 @@ const QuestionsPage = () => {
               ))}
             </Select>
           </FormControl>
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
@@ -218,8 +219,8 @@ const QuestionsPage = () => {
               ))}
             </Select>
           </FormControl>
-        </div>
-        <div className={styles.buttonsContainer}>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center", gap: "2rem" }}>
           <Buttons name={"Reset Options"} click={resetOptions} />
 
           <Buttons
@@ -228,7 +229,7 @@ const QuestionsPage = () => {
               getData(questionsQuantity, category, difficulty, style)
             }
           />
-        </div>
+        </Box>
       </Box>
     </Box>
   );

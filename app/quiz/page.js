@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useQuiz } from "../context/QuizContext";
-import { useRouter } from "next/navigation";
 import { Button, Typography, ButtonGroup, Box } from "@mui/material";
 import { shuffleArray } from "../utils/shuffleArray";
 import styles from "./page.module.css";
@@ -41,8 +40,17 @@ const QuizPage = () => {
     }
 
     return (
-      <div className={styles.main}>
-        <Box sx={{ height: "30%" }}>
+      <Box
+        sx={{
+          height: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "85%",
+          marginInline: "auto",
+        }}
+      >
+        <Box sx={{ height: "20%" }}>
           <Image alt="Logo" src={Logo} width={150} height={150} />
         </Box>
         <Box
@@ -51,6 +59,7 @@ const QuizPage = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            height: "80%",
           }}
         >
           {wrongAnswer ? (
@@ -104,7 +113,7 @@ const QuizPage = () => {
             </Box>
           )}
         </Box>
-      </div>
+      </Box>
     );
   }
 };
