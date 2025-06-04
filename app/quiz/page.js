@@ -22,7 +22,8 @@ const QuizPage = () => {
       quiz[currentIndex].correct_answer,
     ];
 
-    console.log(questions.results[currentIndex].correct_answer);
+    // console.log(questions.results[currentIndex].correct_answer);
+    console.log(questions.results[currentIndex]);
     // console.log(questions.results);
 
     const shuffledAnswers = shuffleArray(answers);
@@ -53,15 +54,7 @@ const QuizPage = () => {
         <Box sx={{ height: "20%" }}>
           <Image alt="Logo" src={Logo} width={150} height={150} />
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "80%",
-          }}
-        >
+        <Box sx={{ height: "80%" }}>
           {wrongAnswer ? (
             <Wrong />
           ) : isFinished ? (
@@ -71,10 +64,10 @@ const QuizPage = () => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "25vw",
+                justifyContent: "space-between",
                 width: "80%",
+                height: "100%",
+                paddingBlock: "2rem",
               }}
             >
               <Typography className={styles.questionBox}>
@@ -110,6 +103,52 @@ const QuizPage = () => {
                   </Button>
                 ))}
               </ButtonGroup>
+              <Box
+                sx={{
+                  color: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  textAlign: "center",
+                }}
+              >
+                <Box>
+                  <Typography>Difficulty</Typography>
+                  <Typography
+                    sx={{
+                      backgroundColor: "var(--main-color)",
+                      borderRadius: "8px",
+                      paddingBlock: "6px",
+                    }}
+                  >
+                    {questions.results[currentIndex].difficulty}
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography>Category</Typography>
+                  <Typography
+                    sx={{
+                      backgroundColor: "var(--main-color)",
+                      borderRadius: "8px",
+                      paddingBlock: "6px",
+                    }}
+                  >
+                    {decodeHtml(questions.results[currentIndex].category)}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Type</Typography>
+                  <Typography
+                    sx={{
+                      backgroundColor: "var(--main-color)",
+                      borderRadius: "8px",
+                      paddingBlock: "6px",
+                    }}
+                  >
+                    {questions.results[currentIndex].type}
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
           )}
         </Box>
