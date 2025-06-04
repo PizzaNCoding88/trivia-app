@@ -71,18 +71,27 @@ const QuestionsPage = () => {
     >
       <Box
         sx={{
-          height: "30%",
+          height: "15%",
           textAlign: " center",
         }}
       >
         <Image alt="Logo" src={Logo} width={150} height={150} />
       </Box>
-      <Box sx={{ height: "70%" }}>
+      <Box
+        sx={{
+          height: "85%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          paddingBlock: "1rem",
+          color: "white",
+        }}
+      >
         <div>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
-              fontSize: "5vw",
+              fontSize: "1rem",
               textAlign: "center",
             }}
           >
@@ -129,7 +138,7 @@ const QuestionsPage = () => {
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
-              fontSize: "5vw",
+              fontSize: "1rem",
               textAlign: "center",
             }}
           >
@@ -157,7 +166,7 @@ const QuestionsPage = () => {
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
-              fontSize: "5vw",
+              fontSize: "1rem",
 
               textAlign: "center",
             }}
@@ -186,7 +195,7 @@ const QuestionsPage = () => {
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
-              fontSize: "5vw",
+              fontSize: "1rem",
               textAlign: "center",
             }}
           >
