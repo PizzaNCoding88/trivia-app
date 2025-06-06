@@ -1,8 +1,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --buttons-bg: #6233ca;
-  --main-color: #6233ca;
+  --buttons-bg: #3f8fa5;
+  /* --buttons-bg: #6233ca; */
+  --main-color: #3f8fa5;
+  /* --main-color: #6233ca; */
   --secondary-color: #001695;
   --font-main: "Ginto Nord", Arial, sans-serif;
 }

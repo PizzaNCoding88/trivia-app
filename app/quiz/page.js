@@ -22,10 +22,7 @@ const QuizPage = () => {
       ...quiz[currentIndex].incorrect_answers,
       quiz[currentIndex].correct_answer,
     ];
-
-    // console.log(questions.results[currentIndex].correct_answer);
     console.log(questions.results[currentIndex]);
-    // console.log(questions.results);
 
     const shuffledAnswers = shuffleArray(answers);
 
@@ -97,7 +94,10 @@ const QuizPage = () => {
                   <Button
                     key={i}
                     variant="contained"
-                    sx={{ borderRadius: "4px !important" }}
+                    sx={{
+                      borderRadius: "4px !important",
+                      backgroundColor: "var(--main-color)",
+                    }}
                     onClick={() => handleAnswer(i)}
                   >
                     {answer}
