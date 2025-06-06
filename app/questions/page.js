@@ -105,7 +105,7 @@ const QuestionsPage = () => {
                 fontSize: "12px",
               }}
             >
-              Number of questions
+              Choose number of questions
             </InputLabel>
 
             <Select

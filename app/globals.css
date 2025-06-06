@@ -53,3 +53,12 @@ a {
     color-scheme: dark;
   }
 }
+
+.MuiFilledInput-root:before {
+  border-bottom: 0px solid #00000000 !important;
+}
+
+.MuiFilledInput-root.Mui-focused {
+  background-color: var(--main-color) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
