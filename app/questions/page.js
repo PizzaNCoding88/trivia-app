@@ -83,16 +83,17 @@ const QuestionsPage = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          paddingBlock: "1rem",
+          paddingBlock: "2.5rem",
           color: "white",
         }}
       >
-        <Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
               fontSize: "1rem",
               textAlign: "center",
+              textShadow: "3px 3px 3px black",
             }}
           >
             How many questions?
@@ -101,6 +102,7 @@ const QuestionsPage = () => {
             <InputLabel
               sx={{
                 color: "rgba(255 255 255 / 100%)",
+                fontSize: "12px",
               }}
             >
               Number of questions
@@ -109,7 +111,11 @@ const QuestionsPage = () => {
             <Select
               value={questionsQuantity}
               onChange={(e) => setQuestionsQuantity(e.target.value)}
-              sx={{ backgroundColor: "var(--main-color)" }}
+              sx={{
+                backgroundColor: "var(--main-color)",
+                height: "50px",
+                borderRadius: "80px",
+              }}
             >
               {Array.from({ length: 50 }, (_, i) => (
                 <MenuItem key={i + 1} value={i + 1}>
@@ -135,25 +141,32 @@ const QuestionsPage = () => {
             </Typography>
           )}
         </Box>
-        <Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
               fontSize: "1rem",
               textAlign: "center",
+              textShadow: "3px 3px 3px black",
             }}
           >
             What's your favourite category?
           </Typography>
           <FormControl fullWidth variant="filled">
-            <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
+            <InputLabel
+              sx={{ color: "rgba(255 255 255 / 100%)", fontSize: "12px" }}
+            >
               Choose category
             </InputLabel>
 
             <Select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              sx={{ backgroundColor: "var(--main-color)" }}
+              sx={{
+                backgroundColor: "var(--main-color)",
+                height: "50px",
+                borderRadius: "80px",
+              }}
             >
               {categories.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
@@ -163,26 +176,32 @@ const QuestionsPage = () => {
             </Select>
           </FormControl>
         </Box>
-        <Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
               fontSize: "1rem",
-
+              textShadow: "3px 3px 3px black",
               textAlign: "center",
             }}
           >
             What's the difficulty you'd like to go for?
           </Typography>
           <FormControl fullWidth variant="filled">
-            <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
+            <InputLabel
+              sx={{ color: "rgba(255 255 255 / 100%)", fontSize: "12px" }}
+            >
               Choose Difficulty
             </InputLabel>
 
             <Select
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value)}
-              sx={{ backgroundColor: "var(--main-color)" }}
+              sx={{
+                backgroundColor: "var(--main-color)",
+                height: "50px",
+                borderRadius: "80px",
+              }}
             >
               {difficulties.map((difficulty, i) => (
                 <MenuItem key={i} value={difficulty.value}>
@@ -192,25 +211,32 @@ const QuestionsPage = () => {
             </Select>
           </FormControl>
         </Box>
-        <Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <Typography
             sx={{
               fontFamily: "var(--font-main)",
               fontSize: "1rem",
               textAlign: "center",
+              textShadow: "3px 3px 3px black",
             }}
           >
             Do you prefer multiple choice or true/false style of trivia?
           </Typography>
           <FormControl fullWidth variant="filled">
-            <InputLabel sx={{ color: "rgba(255 255 255 / 100%)" }}>
+            <InputLabel
+              sx={{ color: "rgba(255 255 255 / 100%)", fontSize: "12px" }}
+            >
               Choose Style
             </InputLabel>
 
             <Select
               value={style}
               onChange={(e) => setStyle(e.target.value)}
-              sx={{ backgroundColor: "var(--main-color)" }}
+              sx={{
+                backgroundColor: "var(--main-color)",
+                height: "50px",
+                borderRadius: "80px",
+              }}
             >
               {types.map((type, i) => (
                 <MenuItem key={i} value={type.value}>
