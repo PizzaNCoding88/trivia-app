@@ -4,7 +4,7 @@ import { Typography, Box } from "@mui/material";
 import React from "react";
 import { useRouter } from "next/navigation";
 
-const Wrong = () => {
+const Correct = () => {
   const router = useRouter();
   function returnHome() {
     router.push("/");
@@ -31,11 +31,11 @@ const Wrong = () => {
           fontSize: "1.2rem",
         }}
       >
-        Wrong Answer
+        You've completed the game
       </Typography>
       <Buttons name={"Return home"} click={returnHome} />
     </Box>
   );
 };
 
-export default Wrong;
+export default Correct;

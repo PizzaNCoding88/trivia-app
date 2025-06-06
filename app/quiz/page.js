@@ -8,6 +8,7 @@ import { decodeHtml } from "../utils/decodeHTML";
 import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";
 import Wrong from "../wrong/wrong";
+import Correct from "../correct/correct";
 
 const QuizPage = () => {
   const { questions } = useQuiz();
@@ -58,7 +59,7 @@ const QuizPage = () => {
           {wrongAnswer ? (
             <Wrong />
           ) : isFinished ? (
-            <Typography>You completed the game</Typography>
+            <Correct />
           ) : (
             <Box
               sx={{
