@@ -9,6 +9,7 @@ import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";
 import Wrong from "../wrong/wrong";
 import Correct from "../correct/correct";
+import PageTransition from "@/components/PageTransition";
 
 const QuizPage = () => {
   const { questions } = useQuiz();
@@ -39,126 +40,130 @@ const QuizPage = () => {
     }
 
     return (
-      <Box
-        sx={{
-          height: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "85%",
-          marginInline: "auto",
-        }}
-      >
-        <Box sx={{ height: "20%" }}>
-          <Image alt="Logo" src={Logo} width={150} height={150} />
-        </Box>
-        <Box sx={{ height: "80%", textAlign: "center" }}>
-          {wrongAnswer ? (
-            <Wrong />
-          ) : isFinished ? (
-            <Correct />
-          ) : (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                marginInline: "auto",
-                height: "100%",
-                paddingBlock: "2rem",
-              }}
-            >
-              <Typography className={styles.questionBox}>
-                {decodeHtml(quiz[currentIndex].question)}
-                <span
-                  className={`${styles.decorations} ${styles.topLeft}`}
-                ></span>
-                <span
-                  className={`${styles.decorations} ${styles.topRight}`}
-                ></span>
-                <span
-                  className={`${styles.decorations} ${styles.bottomLeft}`}
-                ></span>
-                <span
-                  className={`${styles.decorations} ${styles.bottomRight}`}
-                ></span>
-              </Typography>
-              <ButtonGroup
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "40vw 40vw",
-                  gap: "1rem",
-                }}
-              >
-                {shuffledAnswers.map((answer, i) => (
-                  <Button
-                    key={i}
-                    variant="contained"
-                    sx={{
-                      borderRadius: "4px !important",
-                      backgroundColor: "var(--main-color)",
-                    }}
-                    onClick={() => handleAnswer(i)}
-                  >
-                    {answer}
-                  </Button>
-                ))}
-              </ButtonGroup>
+      <PageTransition>
+        <Box
+          sx={{
+            height: "100dvh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "85%",
+            marginInline: "auto",
+          }}
+        >
+          <Box sx={{ height: "20%" }}>
+            <Image alt="Logo" src={Logo} width={150} height={150} />
+          </Box>
+          <Box sx={{ height: "80%", textAlign: "center" }}>
+            {wrongAnswer ? (
+              <Wrong />
+            ) : isFinished ? (
+              <Correct />
+            ) : (
               <Box
                 sx={{
-                  color: "white",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "1rem",
-                  textAlign: "center",
-                  width: "70%",
+                  justifyContent: "space-between",
                   marginInline: "auto",
+                  height: "100%",
+                  paddingBlock: "2rem",
                 }}
               >
-                <Box>
-                  <Typography sx={{ fontSize: "12px" }}>Difficulty</Typography>
-                  <Typography
-                    sx={{
-                      backgroundColor: "var(--main-color)",
-                      borderRadius: "8px",
-                      paddingBlock: "6px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {questions.results[currentIndex].difficulty}
-                  </Typography>
-                </Box>
-                <Box sx={{ textAlign: "center" }}>
-                  <Typography sx={{ fontSize: "12px" }}>Category</Typography>
-                  <Typography
-                    sx={{
-                      backgroundColor: "var(--main-color)",
-                      borderRadius: "8px",
-                      paddingBlock: "6px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {decodeHtml(questions.results[currentIndex].category)}
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontSize: "12px" }}>Type</Typography>
-                  <Typography
-                    sx={{
-                      backgroundColor: "var(--main-color)",
-                      borderRadius: "8px",
-                      paddingBlock: "6px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {questions.results[currentIndex].type}
-                  </Typography>
+                <Typography className={styles.questionBox}>
+                  {decodeHtml(quiz[currentIndex].question)}
+                  <span
+                    className={`${styles.decorations} ${styles.topLeft}`}
+                  ></span>
+                  <span
+                    className={`${styles.decorations} ${styles.topRight}`}
+                  ></span>
+                  <span
+                    className={`${styles.decorations} ${styles.bottomLeft}`}
+                  ></span>
+                  <span
+                    className={`${styles.decorations} ${styles.bottomRight}`}
+                  ></span>
+                </Typography>
+                <ButtonGroup
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: "40vw 40vw",
+                    gap: "1rem",
+                  }}
+                >
+                  {shuffledAnswers.map((answer, i) => (
+                    <Button
+                      key={i}
+                      variant="contained"
+                      sx={{
+                        borderRadius: "4px !important",
+                        backgroundColor: "var(--main-color)",
+                      }}
+                      onClick={() => handleAnswer(i)}
+                    >
+                      {answer}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+                <Box
+                  sx={{
+                    color: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    textAlign: "center",
+                    width: "70%",
+                    marginInline: "auto",
+                  }}
+                >
+                  <Box>
+                    <Typography sx={{ fontSize: "12px" }}>
+                      Difficulty
+                    </Typography>
+                    <Typography
+                      sx={{
+                        backgroundColor: "var(--main-color)",
+                        borderRadius: "8px",
+                        paddingBlock: "6px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      {questions.results[currentIndex].difficulty}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ textAlign: "center" }}>
+                    <Typography sx={{ fontSize: "12px" }}>Category</Typography>
+                    <Typography
+                      sx={{
+                        backgroundColor: "var(--main-color)",
+                        borderRadius: "8px",
+                        paddingBlock: "6px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      {decodeHtml(questions.results[currentIndex].category)}
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography sx={{ fontSize: "12px" }}>Type</Typography>
+                    <Typography
+                      sx={{
+                        backgroundColor: "var(--main-color)",
+                        borderRadius: "8px",
+                        paddingBlock: "6px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      {questions.results[currentIndex].type}
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
-            </Box>
-          )}
+            )}
+          </Box>
         </Box>
-      </Box>
+      </PageTransition>
     );
   }
 };
